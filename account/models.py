@@ -100,3 +100,8 @@ class User(AbstractUser):
 
 
 # post_save.connect(receiver=verification_code_saver, sender=User)
+
+class Comment(models.Model):
+    text = models.TextField()
+    user = models.ForeignKey(User, related_name="comments", on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now=True, null=True)

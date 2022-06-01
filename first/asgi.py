@@ -23,9 +23,13 @@ application = ProtocolTypeRouter({
   "http": get_asgi_application(),
   "websocket": AuthMiddlewareStack(
         URLRouter(
-            chatrest.routing.websocket_urlpatterns,
-            # chat.routing.websocket_urlpatterns,
+            chatrest.routing.websocket_urlpatterns +
+            chat.routing.websocket_urlpatterns,
 
-        )
+        ),
+        # URLRouter(
+        #   chat.routing.websocket_urlpatterns,
+        #   # chat.routing.websocket_urlpatterns,
+        # ),
     )
 })
